@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/Sandbox.dir/src/Main.cpp.o  -o Sandbox 

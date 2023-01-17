@@ -1,0 +1,5 @@
+/root/dev/cpp/Sandbox/build/CMakeFiles/edit_cache.dir
+/root/dev/cpp/Sandbox/build/CMakeFiles/rebuild_cache.dir
+/root/dev/cpp/Sandbox/build/CMakeFiles/package.dir
+/root/dev/cpp/Sandbox/build/CMakeFiles/package_source.dir
+/root/dev/cpp/Sandbox/build/CMakeFiles/Sandbox.dir
