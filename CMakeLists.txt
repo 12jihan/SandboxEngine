@@ -8,8 +8,7 @@ file(GLOB INC_SRC
     external/glad/include
     external/stb/include
     external/glm
-    external/json/include
-    external/assimp/include
+    # external/assimp/include
 )
 
 
@@ -27,17 +26,22 @@ add_executable(${PROJECT_NAME}
     ${ALL_CLASSES}
 )
 
+add_subdirectory(
+    external/glfw
+    external/glad
+)
+
 target_include_directories(${PROJECT_NAME} 
     PUBLIC ${INC_SRC}
 )
 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
-    PUBLIC external/assimp/src
+    # PUBLIC external/assimp/src
 )
 
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    assimp
+    # assimp
 )
