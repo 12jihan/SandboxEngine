@@ -1,29 +1,4 @@
 #include "headers/Shader.h"
-#include <unistd.h>
-
-// Reads a text file and outputs a string with everything in the text file
-std::string get_file_contents(const char* filename)
-{
-    std::ifstream in(filename, std::ios::binary);
-    if (in)
-    {
-        std::string contents;
-        in.seekg(0, std::ios::end);
-        contents.resize(in.tellg());
-        in.seekg(0, std::ios::beg);
-        in.read(&contents[0], contents.size());
-        in.close();
-        return (contents);
-    }
-    throw(errno);
-}
-
-std::string GetCurrentWorkingDir(void) {
-    char buff[FILENAME_MAX];
-    getcwd(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    return current_working_dir;
-}
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
@@ -73,12 +48,35 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     ID = glCreateProgram();
     glAttachShader(ID, vertex);
     glAttachShader(ID, fragment);
+    // std::cout << "Program created: " << ID << std::endl;
     glLinkProgram(ID);
     checkCompileErrors(ID, "PROGRAM");
     // delete the shaders as they're linked into our program now and no longer necessary
     glDeleteShader(vertex);
     glDeleteShader(fragment);
-};
+}
+// activate the shader
+// ------------------------------------------------------------------------
+void Shader::use()
+{
+    glUseProgram(ID);
+}
+// utility uniform functions
+// ------------------------------------------------------------------------
+void Shader::setBool(const std::string& name, bool value) const
+{
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
+}
+// ------------------------------------------------------------------------
+void Shader::setInt(const std::string& name, int value) const
+{
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+}
+// ------------------------------------------------------------------------
+void Shader::setFloat(const std::string& name, float value) const
+{
+    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+}
 
 void Shader::checkCompileErrors(unsigned int shader, std::string type)
 {
@@ -102,27 +100,4 @@ void Shader::checkCompileErrors(unsigned int shader, std::string type)
             std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
         }
     }
-};
-
-// activate the shader
-// ------------------------------------------------------------------------
-void Shader::use()
-{
-    glUseProgram(ID);
-};
-// utility uniform functions
-    // ------------------------------------------------------------------------
-void Shader::setBool(const std::string& name, bool value) const
-{
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
-}
-// ------------------------------------------------------------------------
-void Shader::setInt(const std::string& name, int value) const
-{
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
-}
-// ------------------------------------------------------------------------
-void Shader::setFloat(const std::string& name, float value) const
-{
-    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
