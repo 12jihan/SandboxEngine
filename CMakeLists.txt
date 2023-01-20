@@ -13,7 +13,6 @@ file(GLOB INC_SRC
 
 
 file(GLOB HEADER_FILES
-    headers/**/*.h
     headers/*.h
 )
 
