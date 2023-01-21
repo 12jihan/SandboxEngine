@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd out/build; ./CocoEngine
+cd out/build; ./SandBox

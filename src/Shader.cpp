@@ -1,5 +1,7 @@
 #include "headers/Shader.h"
 
+// constructor generates the shader on the fly
+// ------------------------------------------------------------------------
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
     // 1. retrieve the vertex/fragment source code from filePath
@@ -48,7 +50,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     ID = glCreateProgram();
     glAttachShader(ID, vertex);
     glAttachShader(ID, fragment);
-    // std::cout << "Program created: " << ID << std::endl;
     glLinkProgram(ID);
     checkCompileErrors(ID, "PROGRAM");
     // delete the shaders as they're linked into our program now and no longer necessary
@@ -78,6 +79,9 @@ void Shader::setFloat(const std::string& name, float value) const
     glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
+
+// utility function for checking shader compilation/linking errors.
+// ------------------------------------------------------------------------
 void Shader::checkCompileErrors(unsigned int shader, std::string type)
 {
     int success;
