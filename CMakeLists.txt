@@ -36,11 +36,9 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC external/glfw/src
-    # PUBLIC external/assimp/src
 )
 
 
 target_link_libraries(${PROJECT_NAME} 
     glfw
-    # assimp
 )
