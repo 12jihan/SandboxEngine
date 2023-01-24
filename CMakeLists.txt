@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
-
 project(Sandbox VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
+message("CMAKE CURRENT DIR LIST:\n\t" ${CMAKE_CURRENT_LIST_DIR})
+set(IMGUI_PATH ${CMAKE_CURRENT_LIST_DIR}/external/imgui)
 
 # Copy appropriate files over to the binary directory:
 file(COPY 
