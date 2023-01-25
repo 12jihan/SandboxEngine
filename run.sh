@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd out/build; ./SandBox
+cd out/build; ls -la; ./Sandbox
