@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/external/glad/include"
+                "${workspaceFolder}/external/glad/include",
+                "${workspaceFolder}/external/imgui/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
