@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/external/glad/include",
-                "${workspaceFolder}/external/imgui/**"
+                "${workspaceFolder}/external/glfw/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

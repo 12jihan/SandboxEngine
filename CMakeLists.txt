@@ -31,10 +31,10 @@ file(COPY
 #     ${IMGUI_PATH}/*.h
 #     ${IMGUI_PATH}/backends/*.h
 # )
-message("IMGUI srcs list:\n\t" ${IMGUI_SRCS})
-message(" ")
-message("---------------------------------------------")
-message(" ")
+# message("IMGUI srcs list:\n\t" ${IMGUI_SRCS})
+# message(" ")
+# message("---------------------------------------------")
+# message(" ")
 # Includes from different libraries:
 file(GLOB INC_SRC
     external/glfw/include
@@ -43,6 +43,8 @@ file(GLOB INC_SRC
     external/glm
     # external/assimp/include
 )
+set(list
+${INC_SRC})
 
 # Variable for all the header files used:
 file(GLOB HEADER_FILES
@@ -53,12 +55,21 @@ file(GLOB ALL_CLASSES
     src/*.c
     src/*.cpp
 )
+add_subdirectory(external/glfw)
 # Show me all Headers and Classes in project:
 message("All available headers: \n" ${HEADER_FILES})
 message(" ")
 message("---------------------------------------------")
 message(" ")
 message("All available classes: \n" ${ALL_CLASSES})
+message(" ")
+message("---------------------------------------------")
+message(" ")
+message("All available includes: \n" ${list})
+foreach(X IN LISTS ${list})
+    message("Lib: ${X}")
+endforeach()
+
 message(" ")
 message("---------------------------------------------")
 message(" ")

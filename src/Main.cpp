@@ -12,7 +12,8 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);void processInput(GLFWwindow* window);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void processInput(GLFWwindow *window);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -27,6 +28,9 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
+
+// lighting
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 int main()
 {
@@ -54,9 +58,10 @@ int main()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
-
-    std::cout << "current path: \n ---->: \t" << std::filesystem::current_path() << "\n " << std::endl;
-
+    
+    // tell GLFW to capture our mouse
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    
     // glad: load all OpenGL function pointers
     // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -72,7 +77,8 @@ int main()
     // build and compile our shader program
     // ------------------------------------
     Shader shader("../../src/shaders/vertex_core.glsl", "../../src/shaders/frag_core.glsl"); // you can name your shader files however you like
-
+    // Shader lightCubeShader("1.light_cube.vs", "1.light_cube.fs");
+    
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
