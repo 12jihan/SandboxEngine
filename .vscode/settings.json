@@ -52,7 +52,8 @@
         "ratio": "cpp",
         "iomanip": "cpp",
         "filesystem": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "shader.h": "c"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

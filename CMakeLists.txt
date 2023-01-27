@@ -40,6 +40,7 @@ file(GLOB INC_SRC
     external/glfw/include
     external/glad/include
     external/stb/include
+    external/assimp/include
     external/glm
     # external/assimp/include
 )
@@ -56,6 +57,7 @@ file(GLOB ALL_CLASSES
     src/*.cpp
 )
 add_subdirectory(external/glfw)
+add_subdirectory(external/assimp)
 # Show me all Headers and Classes in project:
 message("All available headers: \n" ${HEADER_FILES})
 message(" ")
@@ -89,5 +91,6 @@ target_include_directories(${PROJECT_NAME}
 )
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE glfw
+    PRIVATE assimp
     ${CMAKE_DL_LIBS}
 )
